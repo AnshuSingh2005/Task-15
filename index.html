@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array Tasks</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e6f2ff;
+      padding: 40px;
+    }
+    .container {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      background-image: url(images.jpeg);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #010000;
+      box-shadow: 3px 3px 2px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      
+    }
+    button:hover {
+      background-color: #0a490c;
+    }
+    input:hover{
+      transform: scale(1.1);
+    }
+    h2, h3 {
+      color: #333;
+    }
+    .result {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    h2{
+      font-size: 40px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2><u>JavaScript: Arrays</u></h2>
+
+    <label for="array1">Enter first array (comma separated):</label>
+    <input type="text" id="array1" placeholder="e.g., 5,2,9,1">
+
+    <label for="array2">Enter second array (comma separated):</label>
+    <input type="text" id="array2" placeholder="e.g., 3,8,6">
+
+    <button onclick="processArrays()">Run Operations</button>
+
+    <!-- Result Sections -->
+    <div class="result" id="sortedArrayDiv">
+      <h3>1. Sorted Array</h3>
+      <p id="sortedArrayOutput"></p>
+    </div>
+
+    <div class="result" id="concatenatedArrayDiv">
+      <h3>2. Concatenated Array</h3>
+      <p id="concatenatedArrayOutput"></p>
+    </div>
+
+    <div class="result" id="removedElementDiv">
+      <h3>3. After Removing First Element</h3>
+      <p id="removedElementOutput"></p>
+    </div>
+  </div>
+
+  <script>
+    function processArrays() {
+      const array1 = document.getElementById('array1').value.split(',').map(Number);
+      const array2 = document.getElementById('array2').value.split(',').map(Number);
+
+      
+      const sortedArray = [...array1].sort((a, b) => a - b);
+      document.getElementById('sortedArrayOutput').innerText = sortedArray.join(', ');
+
+    
+      const concatenatedArray = array1.concat(array2);
+      document.getElementById('concatenatedArrayOutput').innerText = concatenatedArray.join(', ');
+
+      
+      const arrayWithoutFirst = [...array1];
+      arrayWithoutFirst.shift();
+      document.getElementById('removedElementOutput').innerText = arrayWithoutFirst.join(', ');
+    }
+  </script>
+</body>
+</html>
